@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Buttons from './components/Buttons';
+import Hover from './components/Hover';
+
 
 function App() {
+  const [position, setPosition] = useState("up"); //The position state will hold the position of where to show the tooltip
+  const [visibility, setVisibility] = useState(false); //visibility will control the visibility of the tooltip on hover
+  
+  useEffect(()=>{
+    console.log("position is ",position);
+  },[position])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Buttons setPosition={setPosition}/>
+      <Hover position={position} visibility={visibility} setVisibility={setVisibility}/>
+      
+      
     </div>
   );
 }
